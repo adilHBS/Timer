@@ -1,52 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { useState, useRef } from 'react';
+import './App.css';
 
 function App() {
-  const [hours, sethours] = useState(0)
-  const [mins, setmins] = useState(0)
-  const [sec, setsec] = useState(0)
-  
+  const [hours, setHours] = useState(0);
+  const [mins, setMins] = useState(0);
+  const [sec, setSec] = useState(0);
+  const intervalRef = useRef(null);
 
-  const handelStart = () => {
-    setInterval(() => {
-      setsec((prev) => {
-        if (prev === 59) {
-          setmins((prev) => {
-            if (prev === 59) {
-              sethours((prev) => prev + 1)
-              return 0
+  const handleStart = () => {
+    // Prevent multiple intervals
+    if (intervalRef.current !== null) return;
+
+    intervalRef.current = setInterval(() => {
+      setSec((prevSec) => {
+        if (prevSec === 59) {
+          setMins((prevMins) => {
+            if (prevMins === 59) {
+              setHours((prevHours) => prevHours + 1);
+              return 0;
             }
-            return prev + 1
-          })
-          return 0
+            return prevMins + 1;
+          });
+          return 0;
         }
-        return prev + 1
-      })
-    }, 1000)
-  
-  }
-  
-  
-  const handelReset = () => {
-    sethours(0)
-    setmins(0)
-    setsec(0)
-  }
-  
-  
+        return prevSec + 1;
+      });
+    }, 1000);
+  };
+
+  const handleReset = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    setHours(0);
+    setMins(0);
+    setSec(0);
+  };
+
+  const formatTime = (value) => String(value).padStart(2, '0');
 
   return (
-   <div>
-
-    <h1>Timer</h1>
-    <h2 >{hours}:{mins}:{sec}</h2>
-    <button onClick={handelStart}>Start</button>
-    
-    <button onClick={handelReset}>Reset</button>
-   </div>
-  )
+    <div className="App">
+      <h1>Timer</h1>
+      <h2>
+        {formatTime(hours)}:{formatTime(mins)}:{formatTime(sec)}
+      </h2>
+      <button onClick={handleStart}>Start</button>
+      <button onClick={handleReset}>Reset</button>
+    </div>
+  );
 }
 
-export default App
+export default App;

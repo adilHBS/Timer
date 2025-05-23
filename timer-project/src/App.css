@@ -53,3 +53,16 @@ button{
   padding: 0.5em 1em;
   border: none;
 }
+h1{
+  font-size: 4.5em;
+  margin-bottom: 0.5em;
+  color: #747af1 ;
+  
+
+
+}
+h2{
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  color: #f18d74;
+}
