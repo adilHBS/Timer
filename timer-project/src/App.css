@@ -1,68 +1,75 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #1d3557, #457b9d);
+  color: #f1faee;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center container */
+.App {
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-button{
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  max-width: 400px;
+  width: 90%;
   
-  background-color: #646cff;
-  color: white;
+}
+
+/* Title */
+.App h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  box-shadow: #457b9d 10 px;
+}
+
+/* Timer digits */
+.App h2 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+/* Button styling */
+button {
+  background-color: #a8dadc;
+  color: #1d3557;
   border: none;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
+  padding: 12px 24px;
+  margin: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  gap: 0.5em;
-  margin: 1.5em;
-  padding: 0.5em 1em;
-  border: none;
+  transition: all 0.3s ease;
 }
-h1{
-  font-size: 4.5em;
-  margin-bottom: 0.5em;
-  color: #747af1 ;
-  
 
-
+button:hover {
+  background-color: #f1faee;
+  color: #1d3557;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-h2{
-  font-size: 2.5em;
-  margin-bottom: 0.5em;
-  color: #f18d74;
+
+/* Responsive */
+@media (max-width: 480px) {
+  .App h1 {
+    font-size: 2rem;
+  }
+
+  .App h2 {
+    font-size: 2.5rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 8px 0;
+  }
 }
